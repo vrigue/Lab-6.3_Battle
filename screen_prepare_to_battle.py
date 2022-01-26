@@ -1,4 +1,4 @@
-import tkinter
+import tkinter as tk
 
 class Screen_PrepareToBattle (tkinter.Frame):
     def __init__ (self, master, player1, player2, callback_on_commence_battle):
@@ -16,12 +16,23 @@ class Screen_PrepareToBattle (tkinter.Frame):
         
     
     def create_widgets (self):
-         '''
+        '''
         This method creates all of the widgets the prepare to battle page.
         '''
-        #
-        # TO DO
-        #
+
+        tk.Label(self, text = "You").grid(row = 0, column = 0, sticky = tk.N)
+        tk.Label(self, text = "Computer").grid(row = 0, column = 1, sticky = tk.N)
+
+        large_image = tk.PhotoImage(file="images/" + self.player.large_image)
+        w = tk.Label(self, image = large_image)
+        w.photo = large_image
+        w.grid(row = 1, column = 0)
+
+        large_image = tk.PhotoImage(file="images/" + self.computer.large_image)
+        w = tk.Label(self, image = large_image)
+        w.photo = large_image
+        w.grid(row = 1, column = 1)
+
  
     def commence_battle_clicked(self):
         ''' This method is called when the Battle button is clicked. 
