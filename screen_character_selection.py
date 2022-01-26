@@ -49,6 +49,7 @@ class Screen_CharacterSelection (tk.Frame):
             # store in a variable?
             tk.Radiobutton(self, text = f"{character.name}")
             tk.RadioButton.grid(row = row_num)
+            tk.Label(self, text = character.hit_points).grid(row = row_num, column = 2)
 
 
     def selected_clicked(self):
