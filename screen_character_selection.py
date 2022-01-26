@@ -49,7 +49,7 @@ class Screen_CharacterSelection (tk.Frame):
         tk.Label(self, text = "Dexterity").grid(row = 0, column = 3, sticky = tk.N)
         tk.Label(self, text = "Strength").grid(row = 0, column = 4, sticky = tk.N)
 
-        for index in range(len(self.roster.character_list)):
+        for index in range(len(self.roster.character_list)): 
             
             character = self.roster.character_list[index]
 
