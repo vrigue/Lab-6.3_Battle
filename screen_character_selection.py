@@ -63,7 +63,10 @@ class Screen_CharacterSelection (tk.Frame):
 
             row_num += 1 
 
+        tk.Button(self, text = "Character Selected!", command = self.selected_clicked(), width = 10).grid(row = row_num + 1, column = 0, sticky = tk.W + tk.E)
+
     def selected_clicked(self):
         ''' This method is to be called when the "Character Selected!" button is clicked. 
-            Notice that it passes self.character_index back to the callback method. '''         
+            Notice that it passes self.character_index back to the callback method. '''
+         
         self.callback_on_selected(self.character_index.get())
