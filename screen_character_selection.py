@@ -51,12 +51,17 @@ class Screen_CharacterSelection (tk.Frame):
 
         for character in self.roster.character_list:
             # store in a variable?
-            tk.Radiobutton(self, text = f"{character.name}", variable = self.character_index, value = self.roster.character_list.index(character))
-            tk.RadioButton.grid(row = row_num)
+            tk.Radiobutton(self, text = f"{character.name}", variable = self.character_index, value = self.roster.character_list.index(character)).grid(row = row_num, column = 0, sticky = tk.W)
             tk.Label(self, text = character.hit_points).grid(row = row_num, column = 2)
             tk.Label(self, text = character.dexterity).grid(row = row_num, column = 3)
             tk.Label(self, text = character.strength).grid(row = row_num, column = 4)
+            
+            small_image = tk.PhotoImage(file="images/" + character.small_image)
+            w = tk.Label(self, image = small_image)
+            w.photo = small_image 
+            w.grid(row = row_num, column = 1)
 
+            row_num += 1 
 
     def selected_clicked(self):
         ''' This method is to be called when the "Character Selected!" button is clicked. 
