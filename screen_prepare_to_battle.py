@@ -43,6 +43,9 @@ class Screen_PrepareToBattle (tk.Frame):
         tk.Label(self, text = self.player2.hit_points).grid(row = 3, column = 1, sticky = tk.N)
         tk.Label(self, text = self.player2.dexterity).grid(row = 4, column = 1, sticky = tk.N)
         tk.Label(self, text = self.player2.strength).grid(row = 5, column = 1, sticky = tk.N)
+
+        # add commence battle button and function
+        tk.Button(self, text = "Commence Battle!", command = self.commence_battle_clicked).grid(row = 6, column = 1, sticky = tk.E)
         
 
 
