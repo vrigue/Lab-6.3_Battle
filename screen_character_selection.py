@@ -50,6 +50,8 @@ class Screen_CharacterSelection (tk.Frame):
             tk.Radiobutton(self, text = f"{character.name}")
             tk.RadioButton.grid(row = row_num)
             tk.Label(self, text = character.hit_points).grid(row = row_num, column = 2)
+            tk.Label(self, text = character.dexterity).grid(row = row_num, column = 3)
+            tk.Label(self, text = character.strength).grid(row = row_num, column = 4)
 
 
     def selected_clicked(self):
