@@ -1,6 +1,6 @@
 import tkinter as tk
 
-class Screen_PrepareToBattle (tkinter.Frame):
+class Screen_PrepareToBattle (tk.Frame):
     def __init__ (self, master, player1, player2, callback_on_commence_battle):
         super().__init__(master)
 
@@ -20,18 +20,32 @@ class Screen_PrepareToBattle (tkinter.Frame):
         This method creates all of the widgets the prepare to battle page.
         '''
 
+        # create headers
         tk.Label(self, text = "You").grid(row = 0, column = 0, sticky = tk.N)
         tk.Label(self, text = "Computer").grid(row = 0, column = 1, sticky = tk.N)
 
-        player_image = tk.PhotoImage(file="images/" + self.player.large_image)
-        w = tk.Label(self, image = player_image)
-        w.photo = player_image
+        #insert images for selected characters
+        player1_image = tk.PhotoImage(file="images/" + self.player1.large_image)
+        w = tk.Label(self, image = player1_image)
+        w.photo = player1_image
         w.grid(row = 1, column = 0)
 
-        computer_image = tk.PhotoImage(file="images/" + self.computer.large_image)
-        w = tk.Label(self, image = computer_image)
-        w.photo = computer_image
+        player2_image = tk.PhotoImage(file="images/" + self.player2.large_image)
+        w = tk.Label(self, image = player2_image)
+        w.photo = player2_image
         w.grid(row = 1, column = 1)
+
+        # showing information / attributes of chosen characters
+        tk.Label(self, text = self.player1.hit_points).grid(row = 3, column = 0, sticky = tk.N)
+        tk.Label(self, text = self.player1.dexterity).grid(row = 4, column = 0, sticky = tk.N)
+        tk.Label(self, text = self.player1.strength).grid(row = 5, column = 0, sticky = tk.N)
+
+        tk.Label(self, text = self.player2.hit_points).grid(row = 3, column = 1, sticky = tk.N)
+        tk.Label(self, text = self.player2.dexterity).grid(row = 4, column = 1, sticky = tk.N)
+        tk.Label(self, text = self.player2.strength).grid(row = 5, column = 1, sticky = tk.N)
+        
+
+
 
  
     def commence_battle_clicked(self):
