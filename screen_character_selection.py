@@ -45,9 +45,13 @@ class Screen_CharacterSelection (tk.Frame):
         
         row_num = 1
 
+        tk.Label(self, text = "Hit Points").grid(row = 0, column = 2, sticky = tk.N)
+        tk.Label(self, text = "Dexterity").grid(row = 0, column = 3, sticky = tk.N)
+        tk.Label(self, text = "Strength").grid(row = 0, column = 4, sticky = tk.N)
+
         for character in self.roster.character_list:
             # store in a variable?
-            tk.Radiobutton(self, text = f"{character.name}")
+            tk.Radiobutton(self, text = f"{character.name}", variable = self.character_index, value = self.roster.character_list.index(character))
             tk.RadioButton.grid(row = row_num)
             tk.Label(self, text = character.hit_points).grid(row = row_num, column = 2)
 
