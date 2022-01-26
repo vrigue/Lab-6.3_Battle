@@ -65,9 +65,9 @@ class Screen_CharacterSelection (tk.Frame):
             w.photo = small_image 
             w.grid(row = row_num, column = 1)
 
-            row_num += 1 
+            row_num += 1  
 
-        tk.Button(self, text = "Character Selected!", command = self.selected_clicked, width = 10).grid(row = row_num + 1, column = 0, sticky = tk.W + tk.E)
+        tk.Button(self, text = "Character Selected!", command = self.selected_clicked, width = 15).grid(row = row_num + 1, column = 2, columnspan = 2, sticky = tk.N)
 
     def selected_clicked(self):
         ''' This method is to be called when the "Character Selected!" button is clicked. 
