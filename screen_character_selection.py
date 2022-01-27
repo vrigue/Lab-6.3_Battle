@@ -56,10 +56,11 @@ class Screen_CharacterSelection (tk.Frame):
 
             # actual radio buttons
             tk.Radiobutton(self, text = f"{character.name}", variable = self.character_index, value = index).grid(row = row_num, column = 0, sticky = tk.W)
-            tk.Label(self, text = character.hit_points).grid(row = row_num, column = 2)
-            tk.Label(self, text = character.dexterity).grid(row = row_num, column = 3)
-            tk.Label(self, text = character.strength).grid(row = row_num, column = 4)
+            tk.Label(self, text = character.hit_points).grid(row = row_num, column = 2, sticky = tk.N+tk.S)
+            tk.Label(self, text = character.dexterity).grid(row = row_num, column = 3, sticky = tk.N+tk.S)
+            tk.Label(self, text = character.strength).grid(row = row_num, column = 4, sticky = tk.N+tk.S)
             
+            # image for each character 
             small_image = tk.PhotoImage(file="images/" + character.small_image)
             w = tk.Label(self, image = small_image)
             w.photo = small_image 
@@ -67,7 +68,11 @@ class Screen_CharacterSelection (tk.Frame):
 
             row_num += 1  
 
-        tk.Button(self, text = "Character Selected!", command = self.selected_clicked, width = 15).grid(row = row_num + 1, column = 2, columnspan = 2, sticky = tk.N)
+        tk.Label(self, width = 12).grid(row = row_num + 1, column = 2, sticky = tk.N)
+        tk.Label(self, width = 12).grid(row = row_num + 1, column = 3, sticky = tk.N)
+
+        # add character selected button with function / command 
+        tk.Button(self, text = "Character Selected!", command = self.selected_clicked, width = 12).grid(row = row_num + 1, column = 4, sticky = tk.N)
 
     def selected_clicked(self):
         ''' This method is to be called when the "Character Selected!" button is clicked. 
