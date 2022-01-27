@@ -1,9 +1,9 @@
-import tkinter
+import tkinter as tk
 
-class Screen_Battle (tkinter.Frame):
+class Screen_Battle (tk.Frame):
     def __init__ (self, master, player1, player2, callback_on_exit):
         super().__init__(master)
-
+        print("test2")
         # Save references to the two player objects
         self.player1 = player1
         self.player2 = player2
@@ -15,8 +15,10 @@ class Screen_Battle (tkinter.Frame):
         # Save the method reference to which we return control after this page Exits.
         self.callback_on_exit = callback_on_exit
 
-        self.create_widgets()
+
         self.grid()
+        self.create_widgets()
+        
         
     def create_widgets (self):
         '''
@@ -25,6 +27,22 @@ class Screen_Battle (tkinter.Frame):
         #
         # TO DO
         #
+        tk.Label(self, text = "You").grid(row = 4, column = 0, sticky = tk.N)
+        tk.Label(self, text = "Computer").grid(row = 4, column = 1, sticky = tk.N)
+        
+        player1_image = tk.PhotoImage(file="images/" + self.player1.large_image)
+        w = tk.Label(self, image = player1_image)
+        w.photo = player1_image
+        w.grid(row = 5, column = 0)
+        player2_image = tk.PhotoImage(file="images/" + self.player2.large_image)
+        w = tk.Label(self, image = player2_image)
+        w.photo = player2_image
+        w.grid(row = 5, column = 1)
+
+        tk.Label(self, text = str(self.player1.hit_points) + " HP").grid(row = 6, column = 0, sticky = tk.N)
+        tk.Label(self, text = str(self.player2.hit_points) + " HP").grid(row = 6, column = 1, sticky = tk.N)
+
+        
         
     def attack_clicked(self):
         ''' This method is called when the user presses the "Attack" button.
@@ -46,7 +64,8 @@ class Screen_Battle (tkinter.Frame):
     def exit_clicked(self):
         ''' This method is called when the Exit button is clicked. 
             It passes control back to the callback method. '''        
-        self.callback_on_exit()
+        #self.callback_on_exit()
+        pass
   
             
             
