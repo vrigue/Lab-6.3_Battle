@@ -46,8 +46,10 @@ class Screen_Battle (tk.Frame):
         w.grid(row = 5, column = 1)
 
         # stating health
-        tk.Label(self, text = str(self.player1.hit_points) + " HP/" + str(self.player1_max_hp)).grid(row = 6, column = 0, sticky = tk.N)
-        tk.Label(self, text = str(self.player2.hit_points) + " HP/" + str(self.player2_max_hp)).grid(row = 6, column = 1, sticky = tk.N)
+        #self.player1_text_hp = tk.Label(self, text = str(self.player1.hit_points) + " HP/" + str(self.player1_max_hp))
+        #self.player2_text_hp = tk.Label(self, text = str(self.player2.hit_points) + " HP/" + str(self.player2_max_hp))
+        #self.player1_text_hp.grid(row = 5, column = 1, sticky = tk.N)
+        #self.player2_text_hp.grid(row = 6, column = 1, sticky = tk.N)
 
         # quit button
         tk.Button(self, text = "Exit!", command = self.exit_clicked).grid(row = 7, column = 1, sticky = tk.E)
@@ -75,8 +77,23 @@ class Screen_Battle (tk.Frame):
         result1 = self.player1.attack(self.player2)
         result2 = self.player2.attack(self.player1)
 
+        # ignore for now (this was to put hit points underneath)
+        #self.player1_text_hp["text"] = str(self.player1.hit_points) + " HP/" + str(self.player1_max_hp)
+        #elf.player2_text_hp["text"] = str(self.player2.hit_points) + " HP/" + str(self.player2_max_hp)
+        #tk.Label(self, text = self.player2_max_hp).grid(row = 6, column = 1, sticky = tk.N)
+
         tk.Label(self, text = result1).grid(row = 0, column = 1, sticky = tk.E)
         tk.Label(self, text = result2).grid(row = 1, column = 1, sticky = tk.E)
+
+        # ignor for now (to update who won at the end)
+        #if self.player2.hit_points <= 0:
+            #win = str(self.player1.name) + " is victorious!"
+             # make line pop up with who won
+            #tk.Label(self, text = win).grid(row = 2, column = 1, sticky = tk.E)
+        #else:
+            #win = str(self.player2.name) + " is victorious!"
+             # make line pop up with who won
+            #tk.Label(self, text = win).grid(row = 2, column = 1, sticky = tk.E)
                                             
     def exit_clicked(self):
         ''' This method is called when the Exit button is clicked. 
