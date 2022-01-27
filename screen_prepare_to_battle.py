@@ -36,13 +36,13 @@ class Screen_PrepareToBattle (tk.Frame):
         w.grid(row = 1, column = 1)
 
         # showing information / attributes of chosen characters
-        tk.Label(self, text = self.player1.hit_points).grid(row = 3, column = 0, sticky = tk.N)
-        tk.Label(self, text = self.player1.dexterity).grid(row = 4, column = 0, sticky = tk.N)
-        tk.Label(self, text = self.player1.strength).grid(row = 5, column = 0, sticky = tk.N)
+        tk.Label(self, text = f"{self.player1.hit_points} HP").grid(row = 3, column = 0, sticky = tk.N)
+        tk.Label(self, text = f"{self.player1.dexterity} Dexterity").grid(row = 4, column = 0, sticky = tk.N)
+        tk.Label(self, text = f"{self.player1.strength} Strength").grid(row = 5, column = 0, sticky = tk.N)
 
-        tk.Label(self, text = self.player2.hit_points).grid(row = 3, column = 1, sticky = tk.N)
-        tk.Label(self, text = self.player2.dexterity).grid(row = 4, column = 1, sticky = tk.N)
-        tk.Label(self, text = self.player2.strength).grid(row = 5, column = 1, sticky = tk.N)
+        tk.Label(self, text = f"{self.player2.hit_points} HP").grid(row = 3, column = 1, sticky = tk.N)
+        tk.Label(self, text = f"{self.player2.dexterity} Dexterity").grid(row = 4, column = 1, sticky = tk.N)
+        tk.Label(self, text = f"{self.player2.strength} Strength").grid(row = 5, column = 1, sticky = tk.N)
 
         # add commence battle button and function
         tk.Button(self, text = "Commence Battle!", command = self.commence_battle_clicked).grid(row = 6, column = 1, sticky = tk.E)
