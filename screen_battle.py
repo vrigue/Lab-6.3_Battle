@@ -27,9 +27,19 @@ class Screen_Battle (tk.Frame):
         #
         # TO DO
         #
+
+        # make variables for the strings that update who hit who and for how much
+        result1 = self.player1.attack(self.player2)
+        result2 = self.player2.attack(self.player1)
+
+        tk.Label(self, text = result1).grid(row = 0, column = 1, sticky = tk.E)
+        tk.Label(self, text = result2).grid(row = 1, column = 1, sticky = tk.E)
+
+        # headers
         tk.Label(self, text = "You").grid(row = 4, column = 0, sticky = tk.N)
         tk.Label(self, text = "Computer").grid(row = 4, column = 1, sticky = tk.N)
         
+        #image of players
         player1_image = tk.PhotoImage(file="images/" + self.player1.large_image)
         w = tk.Label(self, image = player1_image)
         w.photo = player1_image
@@ -39,8 +49,9 @@ class Screen_Battle (tk.Frame):
         w.photo = player2_image
         w.grid(row = 5, column = 1)
 
-        tk.Label(self, text = str(self.player1.hit_points) + " HP").grid(row = 6, column = 0, sticky = tk.N)
-        tk.Label(self, text = str(self.player2.hit_points) + " HP").grid(row = 6, column = 1, sticky = tk.N)
+        # stating health
+        tk.Label(self, text = str(self.player1.hit_points) + " HP/" + str(self.player1_max_hp)).grid(row = 6, column = 0, sticky = tk.N)
+        tk.Label(self, text = str(self.player2.hit_points) + " HP/" + str(self.player2_max_hp)).grid(row = 6, column = 1, sticky = tk.N)
 
         
         
