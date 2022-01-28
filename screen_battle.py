@@ -24,9 +24,6 @@ class Screen_Battle (tk.Frame):
         '''
         This method creates all of the (initial) widgets for the battle page.
         '''
-        #
-        # TO DO
-        #
 
         # attack button
         tk.Button(self, text = "Attack", command = self.attack_clicked).grid(row = 0, column = 0, sticky = tk.W)
@@ -40,6 +37,7 @@ class Screen_Battle (tk.Frame):
         w = tk.Label(self, image = player1_image)
         w.photo = player1_image
         w.grid(row = 5, column = 0)
+
         player2_image = tk.PhotoImage(file="images/" + self.player2.large_image)
         w = tk.Label(self, image = player2_image)
         w.photo = player2_image
@@ -69,9 +67,6 @@ class Screen_Battle (tk.Frame):
     
                 self.button.destroy()   
         '''        
-        #
-        # TO DO
-        #
 
         # make variables for the strings that update who hit who and for how much
         result1 = self.player1.attack(self.player2)
@@ -85,7 +80,7 @@ class Screen_Battle (tk.Frame):
         tk.Label(self, text = result1).grid(row = 0, column = 1, sticky = tk.E)
         tk.Label(self, text = result2).grid(row = 1, column = 1, sticky = tk.E)
 
-        # ignor for now (to update who won at the end)
+        # ignore for now (to update who won at the end)
         #if self.player2.hit_points <= 0:
             #win = str(self.player1.name) + " is victorious!"
              # make line pop up with who won
