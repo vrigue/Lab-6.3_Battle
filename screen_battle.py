@@ -29,7 +29,13 @@ class Screen_Battle (tk.Frame):
         #
 
         # attack button
-        tk.Button(self, text = "Attack", command = self.attack_clicked).grid(row = 0, column = 0, sticky = tk.W)
+        self.attack_bttn = tk.Button(self, text = "Attack", command = self.attack_clicked)
+        self.attack_bttn.grid(row = 0, column = 0, sticky = tk.W)
+
+        self.p1attack = tk.Label(self, text = '')
+        self.p1attack.grid(row = 0, column = 1, sticky = tk.N)
+        self.p2attack = tk.Label(self, text = '')
+        self.p2attack.grid(row = 1, column = 1, sticky = tk.N)
 
         # headers
         tk.Label(self, text = "You").grid(row = 4, column = 0, sticky = tk.N)
@@ -46,13 +52,12 @@ class Screen_Battle (tk.Frame):
         w.grid(row = 5, column = 1)
 
         # stating health
-        #self.player1_text_hp = tk.Label(self, text = str(self.player1.hit_points) + " HP/" + str(self.player1_max_hp))
-        #self.player2_text_hp = tk.Label(self, text = str(self.player2.hit_points) + " HP/" + str(self.player2_max_hp))
-        #self.player1_text_hp.grid(row = 5, column = 1, sticky = tk.N)
-        #self.player2_text_hp.grid(row = 6, column = 1, sticky = tk.N)
+        self.player1_text_hp = tk.Label(self, text = str(self.player1.hit_points) + "/" + str(self.player1_max_hp) + " HP")
+        self.player2_text_hp = tk.Label(self, text = str(self.player2.hit_points) + "/" + str(self.player2_max_hp) + " HP")
+        self.player1_text_hp.grid(row = 6, column = 0, sticky = tk.N)
+        self.player2_text_hp.grid(row = 6, column = 1, sticky = tk.N)
 
-        # quit button
-        tk.Button(self, text = "Exit!", command = self.exit_clicked).grid(row = 7, column = 1, sticky = tk.E)
+        
 
         
         
@@ -74,31 +79,33 @@ class Screen_Battle (tk.Frame):
         #
 
         # make variables for the strings that update who hit who and for how much
-        result1 = self.player1.attack(self.player2)
-        result2 = self.player2.attack(self.player1)
+        self.p1attack['text'] = self.player1.attack(self.player2)
+        if self.player2.hit_points > 0:
+            self.p2attack['text'] = self.player2.attack(self.player1)
 
         # ignore for now (this was to put hit points underneath)
-        #self.player1_text_hp["text"] = str(self.player1.hit_points) + " HP/" + str(self.player1_max_hp)
-        #elf.player2_text_hp["text"] = str(self.player2.hit_points) + " HP/" + str(self.player2_max_hp)
+        self.player1_text_hp["text"] = str(self.player1.hit_points) + "/" + str(self.player1_max_hp)
+        self.player2_text_hp["text"] = str(self.player2.hit_points) + "/" + str(self.player2_max_hp)
         #tk.Label(self, text = self.player2_max_hp).grid(row = 6, column = 1, sticky = tk.N)
-
-        tk.Label(self, text = result1).grid(row = 0, column = 1, sticky = tk.E)
-        tk.Label(self, text = result2).grid(row = 1, column = 1, sticky = tk.E)
-
+        
         # ignor for now (to update who won at the end)
-        #if self.player2.hit_points <= 0:
-            #win = str(self.player1.name) + " is victorious!"
-             # make line pop up with who won
-            #tk.Label(self, text = win).grid(row = 2, column = 1, sticky = tk.E)
-        #else:
-            #win = str(self.player2.name) + " is victorious!"
-             # make line pop up with who won
-            #tk.Label(self, text = win).grid(row = 2, column = 1, sticky = tk.E)
+        if self.player2.hit_points <= 0:
+            win = str(self.player1.name) + " is victorious!"
+            tk.Label(self, text = win).grid(row = 2, column = 1, sticky = tk.N)
+            # quit button and delete attack button
+            self.attack_bttn.destroy()
+            tk.Button(self, text = "Exit!", command = self.exit_clicked).grid(row = 7, column = 1, sticky = tk.E)
+        elif self.player1.hit_points <= 0:
+            win = str(self.player2.name) + " is victorious!"
+            tk.Label(self, text = win).grid(row = 2, column = 1, sticky = tk.N)
+            # quit button and delete attack button
+            self.attack_bttn.destroy()
+            tk.Button(self, text = "Exit!", command = self.exit_clicked).grid(row = 7, column = 1, sticky = tk.E)
                                             
     def exit_clicked(self):
         ''' This method is called when the Exit button is clicked. 
             It passes control back to the callback method. '''        
-        #self.callback_on_exit()
+        self.callback_on_exit()
         pass
   
             
