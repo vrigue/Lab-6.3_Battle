@@ -1,6 +1,6 @@
-import tkinter
+import tkinter as tk
 
-class Screen_Battle (tkinter.Frame):
+class Screen_Battle (tk.Frame):
     def __init__ (self, master, player1, player2, callback_on_exit):
         super().__init__(master)
 
