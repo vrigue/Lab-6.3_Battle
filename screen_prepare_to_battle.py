@@ -21,8 +21,8 @@ class Screen_PrepareToBattle (tk.Frame):
         '''
 
         # create headers
-        tk.Label(self, text = "You").grid(row = 0, column = 0, sticky = tk.N)
-        tk.Label(self, text = "Computer").grid(row = 0, column = 1, sticky = tk.N)
+        tk.Label(self, text = "You", font = "Helvetica 16 bold").grid(row = 0, column = 0, sticky = tk.N)
+        tk.Label(self, text = "Computer", font = "Helvetica 16 bold").grid(row = 0, column = 1, sticky = tk.N)
 
         #insert images for selected characters
         player1_image = tk.PhotoImage(file="images/" + self.player1.large_image)
@@ -36,18 +36,19 @@ class Screen_PrepareToBattle (tk.Frame):
         w.grid(row = 1, column = 1)
 
         # showing information / attributes of chosen characters
-        tk.Label(self, text = f"{self.player1.hit_points} HP").grid(row = 3, column = 0, sticky = tk.N)
-        tk.Label(self, text = f"{self.player1.dexterity} Dexterity").grid(row = 4, column = 0, sticky = tk.N)
-        tk.Label(self, text = f"{self.player1.strength} Strength").grid(row = 5, column = 0, sticky = tk.N)
+        tk.Label(self, text = f"{self.player1.hit_points} HP", font = "Garamond 18").grid(row = 3, column = 0, sticky = tk.N)
+        tk.Label(self, text = f"{self.player1.dexterity} Dexterity", font = "Garamond 18").grid(row = 4, column = 0, sticky = tk.N)
+        tk.Label(self, text = f"{self.player1.strength} Strength", font = "Garamond 18").grid(row = 5, column = 0, sticky = tk.N)
 
-        tk.Label(self, text = f"{self.player2.hit_points} HP").grid(row = 3, column = 1, sticky = tk.N)
-        tk.Label(self, text = f"{self.player2.dexterity} Dexterity").grid(row = 4, column = 1, sticky = tk.N)
-        tk.Label(self, text = f"{self.player2.strength} Strength").grid(row = 5, column = 1, sticky = tk.N)
+        tk.Label(self, text = f"{self.player2.hit_points} HP", font = "Garamond 18").grid(row = 3, column = 1, sticky = tk.N)
+        tk.Label(self, text = f"{self.player2.dexterity} Dexterity", font = "Garamond 18").grid(row = 4, column = 1, sticky = tk.N)
+        tk.Label(self, text = f"{self.player2.strength} Strength", font = "Garamond 18").grid(row = 5, column = 1, sticky = tk.N)
 
+        # creates plain label for visual purposes 
         tk.Label(self).grid(row = 6, column = 0, sticky = tk.W)
 
         # add commence battle button and function
-        tk.Button(self, text = "Commence Battle!", command = self.commence_battle_clicked).grid(row = 7, column = 1, sticky = tk.E)
+        tk.Button(self, text = "Commence Battle!", font = "Helvetica 18", highlightbackground = "#a62117", command = self.commence_battle_clicked).grid(row = 7, column = 1, sticky = tk.E)
     
  
     def commence_battle_clicked(self):

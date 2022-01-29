@@ -1,16 +1,20 @@
 import tkinter as tk
 
 class Screen_CharacterSelection (tk.Frame):
+
     def __init__ (self, master, roster, callback_on_selected):
         super().__init__(master)
+
        # Save the CharacterRoster  
         self.roster = roster
+
         # Save the method reference to which we return control after the player hits "Character Selected"
         self.callback_on_selected = callback_on_selected
 
         self.grid()
         self.create_widgets()
         
+
     def create_widgets (self):
         '''
         This method creates all of the widgets character selector page.
@@ -46,33 +50,37 @@ class Screen_CharacterSelection (tk.Frame):
         row_num = 1
 
         # headers
-        tk.Label(self, text = "Hit Points").grid(row = 0, column = 2, sticky = tk.N)
-        tk.Label(self, text = "Dexterity").grid(row = 0, column = 3, sticky = tk.N)
-        tk.Label(self, text = "Strength").grid(row = 0, column = 4, sticky = tk.N)
+        tk.Label(self, text = "Hit Points", font = "Helvetica 16 bold").grid(row = 0, column = 2, sticky = tk.N)
+        tk.Label(self, text = "Dexterity", font = "Helvetica 16 bold").grid(row = 0, column = 3, sticky = tk.N)
+        tk.Label(self, text = "Strength", font = "Helvetica 16 bold").grid(row = 0, column = 4, sticky = tk.N)
 
+        # loops through all characters in character list 
         for index in range(len(self.roster.character_list)): 
             
             character = self.roster.character_list[index]
 
-            # actual radio buttons
-            tk.Radiobutton(self, text = f"{character.name}", variable = self.character_index, value = index).grid(row = row_num, column = 0, sticky = tk.W)
-            tk.Label(self, text = character.hit_points).grid(row = row_num, column = 2, sticky = tk.N+tk.S)
-            tk.Label(self, text = character.dexterity).grid(row = row_num, column = 3, sticky = tk.N+tk.S)
-            tk.Label(self, text = character.strength).grid(row = row_num, column = 4, sticky = tk.N+tk.S)
+            # creates radio buttons and labels to display each character
+            tk.Radiobutton(self, text = f"{character.name}", font = "Garamond 18", variable = self.character_index, value = index).grid(row = row_num, column = 0, sticky = tk.W)
+            tk.Label(self, text = character.hit_points, font = "Garamond 20").grid(row = row_num, column = 2, sticky = tk.N+tk.S)
+            tk.Label(self, text = character.dexterity, font = "Garamond 20").grid(row = row_num, column = 3, sticky = tk.N+tk.S)
+            tk.Label(self, text = character.strength, font = "Garamond 20").grid(row = row_num, column = 4, sticky = tk.N+tk.S)
             
-            # image for each character 
+            # creates and displays image for each character 
             small_image = tk.PhotoImage(file="images/" + character.small_image)
             w = tk.Label(self, image = small_image)
             w.photo = small_image 
             w.grid(row = row_num, column = 1)
 
+            # increment value 
             row_num += 1  
 
-        tk.Label(self, width = 12).grid(row = row_num + 1, column = 2, sticky = tk.N)
-        tk.Label(self, width = 12).grid(row = row_num + 1, column = 3, sticky = tk.N)
+        # labels that don't do anything except to adjust column width 
+        tk.Label(self, width = 10).grid(row = row_num + 1, column = 0, sticky = tk.N)
+        tk.Label(self, width = 10).grid(row = row_num + 1, column = 2, sticky = tk.N)
 
-        # add character selected button with function / command 
-        tk.Button(self, text = "Character Selected!", command = self.selected_clicked, width = 12).grid(row = row_num + 1, column = 4, sticky = tk.N)
+        # add character selected button with function
+        tk.Button(self, text = "Character Selected!", font = "Helvetica 18", highlightbackground = "#a62117", command = self.selected_clicked).grid(row = row_num + 1, column = 3, columnspan = 2, sticky = tk.N)
+
 
     def selected_clicked(self):
         ''' This method is to be called when the "Character Selected!" button is clicked. 
